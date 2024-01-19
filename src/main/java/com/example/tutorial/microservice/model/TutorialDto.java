@@ -12,21 +12,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document
-public class TutorialesVO {
-
+public class TutorialDto {
     @Id
     private String id;
     private String title;
     private String description;
     private Boolean published;
-
-    @Override
-    public String toString() {
-        return "TutorialesVO{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", published=" + published +
-                '}';
-    }
 }

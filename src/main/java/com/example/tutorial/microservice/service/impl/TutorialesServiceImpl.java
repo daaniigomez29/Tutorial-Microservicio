@@ -4,9 +4,11 @@ import com.example.tutorial.microservice.model.TutorialesVO;
 import com.example.tutorial.microservice.repository.TutorialesRepository;
 import com.example.tutorial.microservice.service.TutorialesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,11 +45,21 @@ public class TutorialesServiceImpl implements TutorialesService {
 
     @Override
     public ResponseEntity deleteTutorial(String id) {
-        return null;
+        try {
+            tutorialesRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } catch (EmptyResultDataAccessException e){
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Override
     public ResponseEntity deleteAll() {
-        return null;
+        try {
+            tutorialesRepository.deleteAll();
+            return ResponseEntity.ok().build();
+        } catch (EmptyResultDataAccessException e){
+            return ResponseEntity.notFound().build();
+        }
     }
 }

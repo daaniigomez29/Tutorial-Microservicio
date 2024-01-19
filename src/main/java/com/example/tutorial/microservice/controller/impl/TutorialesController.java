@@ -23,11 +23,12 @@ public class TutorialesController implements TutorialesAPI {
 
     @Override
     @GetMapping("/tutorials")
-    public List<TutorialesVO> getAllTutorials(){return tutorialesService.getAllTutorials();}
+    public List<TutorialesVO> getAllTutorials(){
+        return tutorialesService.getAllTutorials();}
 
     @Override
     @GetMapping("/tutorials/{id}")
-    public Optional<TutorialesVO> getTutorialById(String id){return tutorialesService.getTutorialById(id);}
+    public Optional<TutorialesVO> getTutorialById(@PathVariable String id){return tutorialesService.getTutorialById(id);}
 
 
     @Override
@@ -37,21 +38,26 @@ public class TutorialesController implements TutorialesAPI {
 
     @Override
     @PostMapping("/tutorials")
-    public TutorialesVO save(@RequestBody TutorialesVO tutorial){return tutorialesService.save(tutorial);}
+    public TutorialesVO save(@RequestBody TutorialesVO tutorial){
+        return tutorialesService.save(tutorial);
+    }
 
     @Override
-    @PutMapping("tutorials/{id}")
-    public TutorialesVO updateTutorial(TutorialesVO tutorialesVO){
-        if(!tutorialesRepository.findAll().contains(tutorialesVO)){
+    @PutMapping("/tutorials/{id}")
+    public TutorialesVO updateTutorial(@RequestBody TutorialesVO tutorialesVO){
+        return tutorialesService.updateTutorial(tutorialesVO);
+        /*if(tutorialesRepository.findAll().contains(tutorialesVO)){
+            System.out.println("Llega");
             return tutorialesService.updateTutorial(tutorialesVO);
         } else{
             return null;
         }
+         */
     }
 
     @Override
     @DeleteMapping("/tutorials/{id}")
-    public ResponseEntity deleteTutorial(String id){return tutorialesService.deleteTutorial(id);}
+    public ResponseEntity deleteTutorial(@PathVariable String id){return tutorialesService.deleteTutorial(id);}
 
 
     @Override
