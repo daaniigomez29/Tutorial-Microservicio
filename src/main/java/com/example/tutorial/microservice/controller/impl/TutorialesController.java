@@ -6,10 +6,7 @@ import com.example.tutorial.microservice.repository.TutorialesRepository;
 import com.example.tutorial.microservice.service.TutorialesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,12 +34,13 @@ public class TutorialesController implements TutorialesAPI {
     @GetMapping("/tutorials/published")
     public List<TutorialesVO> findByPublished(){return tutorialesService.findByPublished();}
 
+
     @Override
-    @GetMapping("/tutorials")
+    @PostMapping("/tutorials")
     public TutorialesVO save(@RequestBody TutorialesVO tutorial){return tutorialesService.save(tutorial);}
 
     @Override
-    @GetMapping("tutorials/{id}")
+    @PutMapping("tutorials/{id}")
     public TutorialesVO updateTutorial(TutorialesVO tutorialesVO){
         if(!tutorialesRepository.findAll().contains(tutorialesVO)){
             return tutorialesService.updateTutorial(tutorialesVO);
@@ -52,10 +50,12 @@ public class TutorialesController implements TutorialesAPI {
     }
 
     @Override
-    @GetMapping("/tutorials/{id}")
+    @DeleteMapping("/tutorials/{id}")
     public ResponseEntity deleteTutorial(String id){return tutorialesService.deleteTutorial(id);}
 
+
     @Override
-    @GetMapping("/tutorials")
+    @DeleteMapping("/tutorials")
     public ResponseEntity deleteAll(){return tutorialesService.deleteAll();}
+
 }

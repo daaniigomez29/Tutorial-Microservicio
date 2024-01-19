@@ -2,7 +2,7 @@ server:
   port: 8098
 spring:
   application:
-    name: microservices
+    name: microservice
 main:
   allow-bean-definition-overriding:true
 data:
