@@ -6,5 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface TutorialesRepository extends MongoRepository<TutorialesVO, String> {
-    List<TutorialesVO> findByPublished();
+    List<TutorialesVO> findByPublishedTrue();
+    List<TutorialesVO> findByTitleContaining(String title);
 }

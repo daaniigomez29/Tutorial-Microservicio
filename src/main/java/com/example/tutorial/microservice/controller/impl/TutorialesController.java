@@ -33,7 +33,13 @@ public class TutorialesController implements TutorialesAPI {
 
     @Override
     @GetMapping("/tutorials/published")
-    public List<TutorialesVO> findByPublished(){return tutorialesService.findByPublished();}
+    public List<TutorialesVO> findByPublishedTrue(){return tutorialesService.findByPublishedTrue();}
+
+    @Override
+    @GetMapping("/tutorials/title/{title}")
+    public List<TutorialesVO> findByTitleContaining(@PathVariable String title) {
+        return tutorialesService.findByTitleContaining(title);
+    }
 
 
     @Override

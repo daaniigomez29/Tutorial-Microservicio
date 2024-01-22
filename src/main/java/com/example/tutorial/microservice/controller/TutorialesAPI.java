@@ -10,7 +10,9 @@ public interface TutorialesAPI {
 
     List<TutorialesVO> getAllTutorials();
     Optional<TutorialesVO> getTutorialById(String id);
-    List<TutorialesVO> findByPublished();
+    List<TutorialesVO> findByPublishedTrue();
+    List<TutorialesVO> findByTitleContaining(String title);
+
     TutorialesVO save(TutorialesVO tutorialesVO);
     TutorialesVO updateTutorial(TutorialesVO tutorialesVO);
     ResponseEntity deleteTutorial(String id);

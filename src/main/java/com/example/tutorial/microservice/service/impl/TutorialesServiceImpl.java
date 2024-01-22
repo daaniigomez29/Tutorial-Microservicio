@@ -29,8 +29,12 @@ public class TutorialesServiceImpl implements TutorialesService {
     }
 
     @Override
-    public List<TutorialesVO> findByPublished() {
-        return tutorialesRepository.findByPublished();
+    public List<TutorialesVO> findByTitleContaining(String title){return tutorialesRepository.findByTitleContaining(title);}
+
+    @Override
+    public List<TutorialesVO> findByPublishedTrue() {
+        System.out.println("Llega");
+        return tutorialesRepository.findByPublishedTrue();
     }
 
     @Override

@@ -9,7 +9,8 @@ import java.util.Optional;
 public interface TutorialesService {
     List<TutorialesVO> getAllTutorials();
     Optional<TutorialesVO> getTutorialById(String id);
-    List<TutorialesVO> findByPublished();
+    List<TutorialesVO> findByPublishedTrue();
+    List<TutorialesVO> findByTitleContaining(String title);
     TutorialesVO save(TutorialesVO tutorial);
     TutorialesVO updateTutorial(TutorialesVO tutorial);
     ResponseEntity deleteTutorial(String id);
